@@ -1,0 +1,54 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif; /* 设置字体 */
+    background: url("cter/mu.jpg") no-repeat;
+
+}
+
+.audio-controls-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 300px; /* 控制最大宽度 */
+}
+
+.audio-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    width: 100%;
+    text-align: center;
+    font-size: 45px;
+    margin-bottom: 20px; /* 行间距 */
+}
+
+.audio-controls label {
+    flex: 1; /* 使标签占据剩余空间 */
+    text-align: left; /* 标签文本右对齐 */
+    margin-right: 10px; /* 标签和控件之间的间距 */
+    flex-shrink: 0; /* 防止标签在小屏幕上压缩 */
+    white-space: nowrap; /* 防止标签文本换行 */
+}
+
+input[type="range"] {
+    width: 100%; /* 滑块宽度 */
+    height: 10px;
+    
+}
+
+input[type="checkbox"] {
+    margin: 0; /* 重置复选框的默认外边距 */
+    width:20px;
+    height: 20px;
+    
+}
+
+audio {
+    display: none; /* 隐藏audio元素 */
+}
