@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>成就展示</title>
+  <style>
+    body {
+      background-image: url('background2.png');
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .achievement-box {
+      width: 80%;
+      max-width: 600px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    .achievement-box h1 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .achievement-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .achievement-list li {
+      font-size: 18px;
+      color: #555;
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      transition: all 0.3s ease;
+    }
+
+    .achievement-list li:hover {
+      background-color: #e9f5ff;
+      border-color: #007bff;
+      color: #007bff;
+    }
+  </style>
+</head>
+<body>
+  <div class="achievement-box">
+    <h1>您已经获得的成就</h1>
+    <ul class="achievement-list">
+      <li>找到第一个物品！</li>
+      <li>成为寻宝大师！</li>
+    </ul>
+  </div>
+</body>
+</html>

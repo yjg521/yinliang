@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宋韵文化</title>
+
+    <link rel="stylesheet" href="pl.css">
+</head>
+<body>
+    <div class="audio-controls-container">
+        <div class="audio-controls">
+            <label for="volume-slider">音乐:</label>
+            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1">
+        </div>
+        <div class="audio-controls">
+            <label for="sound-effects-checkbox">音效:</label>
+            <input type="checkbox" id="sound-effects-checkbox">
+        </div>
+    </div>
+    <audio id="audio-player" src="my-audio-file.mp3" preload="auto" autoplay loop></audio>
+    
+    
+
+
+    <script src="script.js"></script>
+   
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宋韵寻踪宝图</title>
+<style>
+  @font-face {
+    font-family: 'FloralD';
+    src: url('FloralD.ttf'); /* 确保字体文件路径正确 */
+  }
+
+  body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .carousel {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .carousel img {
+    width: 100%;
+    height: auto;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* 添加淡入淡出动画 */
+  }
+
+  .carousel img.active {
+    display: block;
+    opacity: 1;
+  }
+
+  .carousel-caption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-family: 'FloralD', cursive; /* 使用花体字 */
+    font-size: 2em; /* 调整字体大小 */
+    color: white; /* 设置字体颜色 */
+    background-color: rgba(0, 0, 0, 0.5); /* 设置背景颜色和透明度 */
+    padding: 10px 0; /* 添加内边距 */
+  }
+
+  .carousel-thumbnails {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .carousel-thumbnails img {
+    width: 20%;
+    height: auto;
+    margin: 0 5px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.3s ease-in-out; /* 添加缩略图的淡入淡出动画 */
+  }
+
+  .carousel-thumbnails img.active-thumb {
+    opacity: 1;
+  }
+
+  .carousel-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-family: 'FloralD', cursive; /* 使用花体字 */
+    font-size: 1.5em; /* 调整字体大小 */
+    color: white; /* 设置字体颜色 */
+    background-color: rgba(0, 0, 0, 0.3); /* 设置背景颜色和透明度 */
+    padding: 10px 0; /* 添加内边距 */
+  }
+
+.top-left-images {
+  position: absolute;
+  top: 10px; /* 调整为距离顶部10px */
+  left: 10px; /* 调整为距离左侧10px */
+}
+
+.top-left-images img {
+  width: 50px; /* 设置图片宽度 */
+  height: 50px; /* 设置图片高度 */
+  cursor: pointer; /* 鼠标悬停时显示指针 */
+}
+
+.top-left-images img:hover {
+  opacity: 0.7; /* 鼠标悬停时图片透明度变为0.7 */
+}
+
+
+#play-music-btn {
+  position: absolute;
+  top: 10px; /* 调整音乐按键距离顶部位置 */
+  left: 10px; /* 调整音乐按键距离左侧位置 */
+  cursor: pointer; /* 鼠标悬停时显示指针 */
+}
+
+
+  /* 在您的<style>标签中添加以下代码 */
+#volumeControl {
+  width: 80px; /* 缩小音量条的宽度 */
+  height: 5px; /* 保持音量条的高度 */
+  background-color: #ffd000; /* 设置音量条颜色为黄色 */
+  position: absolute;
+  top: 30px; /* 调整音量条距离顶部位置 */
+  left: 70px; /* 调整音量条距离左侧位置，根据音乐按键的位置调整 */
+  -webkit-appearance: none; /* 移除默认样式 */
+  appearance: none; /* 移除默认样式 */
+}
+
+/* 为音量条滑块添加样式 */
+#volumeControl::-webkit-slider-thumb {
+  -webkit-appearance: none; /* 移除默认样式 */
+  appearance: none; /* 移除默认样式 */
+  width: 15px; /* 滑块宽度 */
+  height: 15px; /* 滑块高度 */
+  background: rgb(245, 162, 18); /* 滑块颜色 */
+  cursor: pointer; /* 鼠标悬停时显示指针 */
+  border-radius: 50%; /* 设置滑块为圆形 */
+}
+
+#volumeControl::-moz-range-thumb {
+  width: 20px; /* 滑块宽度 */
+  height: 20px; /* 滑块高度 */
+  background: rgb(245, 162, 18); /* 滑块颜色 */
+  cursor: pointer; /* 鼠标悬停时显示指针 */
+  border-radius: 50%; /* 设置滑块为圆形 */
+}
+
+/* 为Firefox浏览器添加滑块样式 */
+#volumeControl::-moz-range-thumb {
+  width: 20px; /* 滑块宽度 */
+  height: 20px; /* 滑块高度 */
+  background: #ffd000; /* 滑块颜色 */
+  border-radius: 50%; /* 设置滑块为圆形 */
+  cursor: pointer; /* 鼠标悬停时显示指针 */
+}
+
+
+
+  .top-right-images {
+    position: absolute;
+    top: 10px; /* 调整为距离顶部10px */
+    right: 10px; /* 调整为距离右侧10px */
+    display: flex; /* 使用flex布局来横排图片 */
+  }
+
+
+  .top-right-images img {
+    width: 50px; /* 设置图片宽度 */
+    height: 50px; /* 设置图片高度 */
+    margin-left: 10px; /* 设置图片之间的间距 */
+    cursor: pointer; /* 鼠标悬停时显示指针 */
+  }
+
+  .top-right-images img:hover {
+    opacity: 0.7; /* 鼠标悬停时图片透明度变为0.7 */
+  }
+
+  .top-right-images button {
+    border: none; /* 移除按钮边框 */
+    background: none; /* 移除按钮背景 */
+    cursor: pointer; /* 鼠标悬停时显示指针 */
+  }
+
+  .top-right-images button:hover {
+    opacity: 0.7; /* 鼠标悬停时按钮透明度变为0.7 */
+  }
+
+  .start-button-container {
+    text-align: center;
+    margin-top: 20px; /* 根据需要调整与图片之间的间距 */
+  }
+
+  .start-button {
+    padding: 10px 20px; /* 按钮的内边距 */
+    font-size: 1em; /* 按钮的字体大小 */
+    font-weight: bold; /* 按钮文字加粗 */
+    color: white; /* 按钮的字体颜色 */
+    background-color: #A52A2A; /* 按钮的背景颜色，改为淡淡的一层棕色 */
+    border: none; /* 移除按钮的边框 */
+    border-radius: 5px; /* 按钮的圆角 */
+    cursor: pointer; /* 鼠标悬停时显示指针 */
+    transition: background-color 0.3s; /* 按钮背景颜色的过渡效果 */
+  }
+
+  .start-button:hover {
+    background-color: #7B3E3E; /* 鼠标悬停时按钮的背景颜色，改为深一点的棕色 */
+  }
+
+  
+</style>
+</head>
+
+<body>
+
+
+  <!-- 添加音频元素 -->
+
+
+<!-- 音效控制 -->
+   <audio id="click-sound" preload="auto">
+    <source src="yinxiao.mp3" type="audio/mpeg">
+  </audio> 
+
+
+
+<div class="carousel">
+  <div class="carousel-caption">请选择地图</div>
+  <img src="image1.jpg" class="active" data-text="南宋御街回春堂处。">
+  <img src="image2.jpg" data-text="南宋御街冷落时分。">
+  <img src="image3.png" data-text="南宋御街绿叶成荫。">
+  <div class="carousel-text"></div>
+</div>
+
+<div class="carousel-thumbnails">
+  <img src="image1.jpg" class="active-thumb" onclick="showImage(this)">
+  <img src="image2.jpg" onclick="showImage(this)">
+  <img src="image3.png" onclick="showImage(this)">
+</div>
+
+<!-- 新增的右上角图片和按钮 -->
+<div class="top-right-images">
+  <img src="setting.png" alt="设置" class="clickable" onclick="goToSettingPage()">
+  <img src="medal.png" alt="奖牌" class="clickable" onclick="goToMedalPage()">
+  <img src="tips.png" alt="提示" class="clickable" onclick="goToTipsPage()">
+</div>
+
+  <!-- 新增的播放音乐按钮 --><!-- 在您的HTML中添加以下代码 -->
+<!-- 在您的HTML中添加以下代码 -->
+<div class="top-left-images">
+  <img id="play-music-btn" onclick="start()"  src="music.png" alt="播放音乐" />
+</div>
+
+
+<!-- 开始按钮 -->
+  <div class="start-button-container">
+    <button class="start-button" onclick="startTreasureHunt()">开始寻宝！</button>
+  </div>
+
+
+
+
+<script src="script.js"></script>
+
+<script>
+
+  获取音频元素和图片元素
+  var audio = document.getElementById('audio-player');
+  var playMusicBtn = document.getElementById('play-music-btn');
+
+  为音乐图标添加点击事件
+  function start() {
+    audio.play();
+  };
+  
+
+  function showImage(selectedThumb) {
+    const images = document.querySelectorAll('.carousel img');
+    images.forEach(img => img.classList.remove('active'));
+
+    const thumbnails = document.querySelectorAll('.carousel-thumbnails img');
+    thumbnails.forEach(thumb => thumb.classList.remove('active-thumb'));
+
+    const src = selectedThumb.getAttribute('src');
+    const mainImage = document.querySelector(`.carousel img[src="${src}"]`);
+    mainImage.classList.add('active');
+
+    selectedThumb.classList.add('active-thumb');
+
+    // 更新文本
+    const text = mainImage.getAttribute('data-text');
+    const carouselText = document.querySelector('.carousel-text');
+    carouselText.textContent = text;
+  }
+
+  function goToSettingPage() {
+  window.location.href = 'setting.html'; // 将'newpage.html'替换为您的新页面URL
+
+  
+}
+  function goToMedalPage() {
+  window.location.href = 'medal.html'; // 将'newpage.html'替换为您的新页面URL
+
+  
+}
+  function goToTipsPage() {
+  window.location.href = 'tips.html'; // 将'newpage.html'替换为您的新页面URL
+
+  
+}
+  
+// document.getElementById('play-music-btn').addEventListener('click', function() {
+//   var audio = document.getElementById('audio-player');
+//   audio.play();
+// });
+
+
+//   var audio = document.getElementById('audio-player');
+// var volumeControl = document.getElementById('volumeControl');
+
+// volumeControl.addEventListener('input', function() {
+//   audio.volume = volumeControl.value;
+// });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>提示选择</title>
+  <style>
+    body {
+      background-image: url('background2.png');
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .question-box {
+      width: 80%;
+      max-width: 400px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    .question-box h1 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+
+    .button-container button {
+      font-size: 18px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .button-yes {
+      background-color: #28a745;
+      color: #fff;
+    }
+
+    .button-yes:hover {
+      background-color: #218838;
+    }
+
+    .button-no {
+      background-color: #dc3545;
+      color: #fff;
+    }
+
+    .button-no:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+<body>
+  <div class="question-box">
+    <h1>是否使用提示？</h1>
+    <div class="button-container">
+      <button class="button-yes" onclick="handleYes()">是</button>
+      <button class="button-no" onclick="handleNo()">否</button>
+    </div>
+  </div>
+
+  <script>
+    function handleYes() {
+      window.location.href = 'index.html';
+    }
+
+    function handleNo() {
+      window.location.href = 'index.html';
+
+    }
+  </script>
+</body>
+</html>

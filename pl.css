@@ -5,13 +5,15 @@ body {
     height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif; /* 设置字体 */
-    background: url("cter/mu.jpg") no-repeat;
+    background: url("background2.png") no-repeat;
+    background-size: cover;
+    background-position: center;
 
 }
 
 .audio-controls-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: column;/* 项目将会沿着垂直方向排列，即沿着容器的垂直轴（cross axis）堆叠。 */
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -30,7 +32,7 @@ body {
 
 .audio-controls label {
     flex: 1; /* 使标签占据剩余空间 */
-    text-align: left; /* 标签文本右对齐 */
+    text-align: left; /* 标签文本左对齐 */
     margin-right: 10px; /* 标签和控件之间的间距 */
     flex-shrink: 0; /* 防止标签在小屏幕上压缩 */
     white-space: nowrap; /* 防止标签文本换行 */
